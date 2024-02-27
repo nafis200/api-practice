@@ -13,7 +13,7 @@ const displayPhones = phones =>{
      phones = phones.slice(0, 10)
 
      const Showall = document.getElementById('show-all-container')
-     if(phones.length > 3){
+     if(phones.length > 12){
             Showall.classList.remove('hidden')
      }
      else{
@@ -36,10 +36,14 @@ const displayPhones = phones =>{
             phoneContainer.appendChild(phoneCard)
 
         });
+
+        // hide loading spinner
+        toggleLoad(false)
 }
 
 
 const handleSearch = ()=>{
+  toggleLoad(true)
   const Search = document.getElementById('search')
 
   const searchText = Search.value;
@@ -47,6 +51,16 @@ const handleSearch = ()=>{
   console.log(searchText);
   loadPhone(searchText);
   
+}
+
+const toggleLoad = (isloading)=>{
+  const loading = document.getElementById('loadings')
+  if(isloading){
+    loading.classList.remove('hidden')
+  }
+  else{
+    loading.classList.add('hidden')
+  }
 }
 
 //loadPhone()
